@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:elevation="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#80000000">
+
+
+            <TextView
+                android:id="@+id/wylot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Data wylotu: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/powrot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Data powrotu: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/krajpodrozy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Kraj Podróży: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/miastowylotu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Miasto wylotu: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/krajdocelowy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Kraj docelowy: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/miastodocelowe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Miasto docelowe: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/cena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Cena: "
+                android:textColor="#263238"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/infoOKrajuButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sprawdz informacje o kraju"
+                android:layout_margin="4dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
