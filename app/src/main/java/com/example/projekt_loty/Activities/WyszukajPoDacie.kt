@@ -2,6 +2,7 @@ package com.example.projekt_loty.Activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View.OnClickListener
 import android.widget.Button
@@ -13,10 +14,19 @@ import java.util.Calendar
 import java.text.SimpleDateFormat
 import java.util.Locale
 import android.view.inputmethod.InputMethodManager
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.projekt_loty.R
+import com.example.projekt_loty.ViewModels.LotyViewModal
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class WyszukajPoDacie : AppCompatActivity(){
+
+    private lateinit var viewModel: LotyViewModal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.wyszukajpodacie)
@@ -35,6 +45,12 @@ class WyszukajPoDacie : AppCompatActivity(){
         // mainContainer to dodatek, dzięki któremu po wciśnięciu pustej przestrzeni
         // w aplikacji kalendarze się zamkną
         val mainContainer: View = findViewById(R.id.mainContainer)
+
+        // podpinamy viewModel do aktywności
+        viewModel = ViewModelProvider
+            .AndroidViewModelFactory
+            .getInstance(application)
+            .create(LotyViewModal::class.java)
 
         mainContainer.setOnClickListener {
             startDatePicker.visibility = View.GONE
@@ -67,11 +83,43 @@ class WyszukajPoDacie : AppCompatActivity(){
         }
 
         searchbutton.setOnClickListener(OnClickListener {
-            // Przejście do widoku wyświetlającego listę lotów miedzy datami
-            val intent = Intent(this, ListaMiedzyDatami::class.java)
-            intent.putExtra("datawylotu", startDate)
-            intent.putExtra("datapowrotu", endDate)
-            startActivity(intent)
+            val miasto = miastowylotu.text.toString()
+
+            // Rozpoczęcie asynchronicznej pracy
+            lifecycleScope.launch {
+                // Wykonanie funkcji viewModel.ilemiast(miasto) w wątku tła
+                val iloscMiast = withContext(Dispatchers.IO) {
+                    viewModel.czymiastowylotu(miasto)
+                }
+
+                if(miasto != "") {
+                    // Obsługa zdarzenia po naciśnięciu przycisku "Wyszukaj loty po dacie"
+                    if (iloscMiast != 0) {
+                        // Przejście do widoku wyświetlającego listę lotów miedzy datami
+                        val intent = Intent(this@WyszukajPoDacie, ListaMiedzyDatami::class.java)
+                        intent.putExtra("datawylotu", startDate)
+                        intent.putExtra("datapowrotu", endDate)
+                        intent.putExtra("miastowylotu", miasto)
+                        startActivity(intent)
+                    } else {
+                        Log.d("Bledne miasto", "Nie ma takiego miasta w bazie danych")
+                        val snackbar = Snackbar.make(
+                            findViewById(android.R.id.content),
+                            "Nie ma takiego miasta w bazie danych",
+                            3000
+                        )
+                        snackbar.show()
+                    }
+                }
+                else{
+                    // Przejście do widoku wyświetlającego listę lotów miedzy datami
+                    val intent = Intent(this@WyszukajPoDacie, ListaMiedzyDatami::class.java)
+                    intent.putExtra("datawylotu", startDate)
+                    intent.putExtra("datapowrotu", endDate)
+                    intent.putExtra("miastowylotu", miasto)
+                    startActivity(intent)
+                }
+            }
         })
 
     }

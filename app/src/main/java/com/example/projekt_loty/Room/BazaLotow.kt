@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = arrayOf(Loty::class), version = 8, exportSchema = false)
+@Database(entities = arrayOf(Loty::class), version = 9, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class BazaLotow :RoomDatabase() {
     abstract fun getFlightsDao(): LotyDao

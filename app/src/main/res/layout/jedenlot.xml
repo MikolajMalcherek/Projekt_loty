@@ -82,11 +82,11 @@
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/infoOKrajuButton"
+                android:id="@+id/infoOMiescieButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sprawdz informacje o kraju"
+                android:text="Sprawdz informacje o miescie"
                 android:layout_margin="4dp"/>
 
         </LinearLayout>

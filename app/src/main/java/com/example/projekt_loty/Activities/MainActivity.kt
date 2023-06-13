@@ -11,12 +11,6 @@ import com.example.projekt_loty.R
 import com.example.projekt_loty.ViewModels.LotyViewModal
 
 
-
-
-
-
-
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: LotyViewModal
@@ -25,13 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        viewModel = ViewModelProvider
+            .AndroidViewModelFactory
+            .getInstance(application)
             .create(LotyViewModal::class.java)
 
-        //viewModel = ViewModelProvider
-        //    .AndroidViewModelFactory
-        //    .getInstance(application)
-        //    .create(LotyViewModal::class.java)
 
         viewModel.ilelotow.observe(this, { liczbaRekordow ->
             if (liczbaRekordow != null && liczbaRekordow > 0) {
@@ -43,10 +35,10 @@ class MainActivity : AppCompatActivity() {
                 // Baza danych jest pusta, można podjąć odpowiednie działania
                 val jestpusta = "Baza jest pusta, dodaje dane..."
                 println(jestpusta)
+                // Uzupelniamy baze przykładowymi danymi
                 viewModel.sprawdzBazeDanych()
             }
         })
-
 
         viewModel.ilelotow.observe(this, { value ->
             // Tutaj otrzymujesz wartość liczby rekordów
@@ -57,15 +49,6 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-
-
-
-
-
-
-
-
-
         val buttonSearchFlights = findViewById<Button>(R.id.buttonSearchFlights)
         buttonSearchFlights.setOnClickListener(OnClickListener {
             // Obsługa zdarzenia po naciśnięciu przycisku "Wyszukaj loty po dacie"
@@ -73,7 +56,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-
+        val buttonSprawdzInfo = findViewById<Button>(R.id.buttonCheckCity)
+        buttonSprawdzInfo.setOnClickListener(OnClickListener {
+            // Obsługa zdarzenia po naciśnięciu przycisku "Wyszukaj loty po dacie"
+            val intent = Intent(this, WpiszMiasto::class.java)
+            startActivity(intent)
+        })
     }
 
 

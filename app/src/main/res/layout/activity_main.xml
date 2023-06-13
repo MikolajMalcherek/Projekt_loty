@@ -24,10 +24,10 @@
         android:layout_marginEnd="16dp" />
 
     <Button
-        android:id="@+id/buttonCheckCountryInfo"
+        android:id="@+id/buttonCheckCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sprawdź informacje o kraju"
+        android:text="Sprawdź informacje o mieście"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp" />

@@ -52,8 +52,21 @@ class LotyViewModal(application: Application) : AndroidViewModel(application) {
         return repository.getAllFlights()
     }
 
+    fun szukajMiedzyDatami(startDate: Date, endDate: Date, miastowylotu: String): LiveData<List<Loty>>{
+        return repository.szukajMiedzyDatami(startDate, endDate, miastowylotu)
+    }
 
+    fun stopienBezpieczenstwa(miejscowosc: String): String{
+        return repository.stopienBezpieczenstwa(miejscowosc)
+    }
 
+    fun ilemiast(miasto: String): Int{
+        return repository.ilemiast(miasto)
+    }
+
+    fun czymiastowylotu(miasto: String): Int{
+        return repository.czymiastowylotu(miasto)
+    }
 
     fun sprawdzBazeDanych() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -123,6 +136,20 @@ class LotyViewModal(application: Application) : AndroidViewModel(application) {
                 "Niemcy", "Niemcy", "Cypr", "Grecja", "Hiszpania"
             )
 
+            val bezpieczenstwo = listOf(
+                "bezpieczne", "umiarkowane", "umiarkowane", "bezpieczne", "umiarkowane",
+                "umiarkowane", "umiarkowane", "bezpieczne", "bezpieczne", "bezpieczne",
+                "umiarkowane", "umiarkowane", "bezpieczne", "bezpieczne", "bezpieczne",
+                "bezpieczne", "bezpieczne", "bezpieczne", "umiarkowane", "bezpieczne",
+                "bezpieczne", "bezpieczne", "bezpieczne", "bezpieczne", "umiarkowane",
+                "umiarkowane", "bezpieczne", "umiarkowane", "bezpieczne", "bezpieczne",
+                "bezpieczne", "umiarkowane", "bezpieczne", "umiarkowane", "bezpieczne",
+                "umiarkowane", "bezpieczne", "bezpieczne", "umiarkowane", "bezpieczne",
+                "bezpieczne", "bezpieczne", "umiarkowane", "umiarkowane", "umiarkowane",
+                "bezpieczne", "bezpieczne", "umiarkowane", "bezpieczne", "umiarkowane"
+            )
+
+
             val cenyLotow = listOf(
                 324, 576, 789, 246, 463,
                 852, 175, 632, 954, 381,
@@ -136,6 +163,8 @@ class LotyViewModal(application: Application) : AndroidViewModel(application) {
                 613, 269, 486, 728, 547
             )
 
+
+            // Uzupełnianie bazy danych
             for (i in 0 until dataWylotu.size) {
                 val lot = Loty(
                     KrajWylotu = "Polska",
@@ -144,6 +173,7 @@ class LotyViewModal(application: Application) : AndroidViewModel(application) {
                     DataPowrotu = formatToDateFormat(dataPowrotu[i]),
                     MiastoDocelowe = miastaDocelowe[i],
                     KrajDocelowy = panstwaDocelowe[i],
+                    Bezpieczenstwo = bezpieczenstwo[i],
                     Cena = cenyLotow[i]
                 )
                 dodajLot(lot)

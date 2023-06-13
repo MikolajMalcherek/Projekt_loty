@@ -5,73 +5,76 @@
     android:layout_height="match_parent"
     android:background="@drawable/tlo">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <Button
-        android:id="@+id/datawylotuCalendarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wybierz datę wylotu" />
-
-    <Button
-        android:id="@+id/datapowrotuCalendarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wybierz datę powrotu" />
-
     <LinearLayout
-        android:id="@+id/dateSelectionLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/datawylotuCalendarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wybierz datę wylotu" />
+
+        <Button
+            android:id="@+id/datapowrotuCalendarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wybierz datę powrotu" />
+
+        <LinearLayout
+            android:id="@+id/dateSelectionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/datawylotuTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Wybrana data początkowa: "
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/datapowrotuTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Wybrana data końcowa: "
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <DatePicker
+            android:id="@+id/startDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <DatePicker
+            android:id="@+id/endDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
 
         <TextView
-            android:id="@+id/datawylotuTextView"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="Wybrana data początkowa: " />
+            android:layout_height="wrap_content"
+            android:text="Wpisz nazwę miasta wylotu:"
+            android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/datapowrotuTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="Wybrana data końcowa: " />
+        <EditText
+            android:id="@+id/miastoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/wyszukajButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wyszukaj" />
 
     </LinearLayout>
-
-    <DatePicker
-        android:id="@+id/startDatePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <DatePicker
-        android:id="@+id/endDatePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wpisz nazwę miasta:" />
-
-    <EditText
-        android:id="@+id/miastoEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp" />
-
-    <Button
-        android:id="@+id/wyszukajButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wyszukaj" />
-
-</LinearLayout>
 </FrameLayout>

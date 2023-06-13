@@ -14,6 +14,7 @@ class Loty
     @ColumnInfo(name = "DataPowrotu")val DataPowrotu:Date,
     @ColumnInfo(name = "MiastoDocelowe")val MiastoDocelowe:String,
      @ColumnInfo(name = "KrajDocelowy")val KrajDocelowy:String,
+     @ColumnInfo(name = "Bezpieczenstwo")val Bezpieczenstwo:String,
      @ColumnInfo(name = "Cena")val Cena:Int
 
 ) {

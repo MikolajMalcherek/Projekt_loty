@@ -27,6 +27,12 @@
         <activity
             android:name=".Activities.ListaMiedzyDatami">
         </activity>
+        <activity
+            android:name=".Activities.MiastoInfo">
+        </activity>
+        <activity
+            android:name=".Activities.WpiszMiasto">
+        </activity>
 
     </application>
 
